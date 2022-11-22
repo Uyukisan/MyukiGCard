@@ -1,0 +1,453 @@
+.myuki-gcard_mask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.4);
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	justify-content: center;
+	align-items: baseline;
+	transition: all .5s ease;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+	z-index: 9999;
+	box-sizing: border-box;
+}
+
+/* 
+.myuki-gcard_mask::after {
+	content: "";
+	position: absolute;
+	left: -100px;
+	top: -100px;
+	right: -100px;
+	bottom: -100px;
+	background-color: rgba(255, 255, 255, 0.4);
+	background-attachment: fixed;
+	z-index: 9998;
+	-webkit-filter: blur(10px);
+	-moz-filter: blur(10px);
+	-ms-filter: blur(10px);
+	filter: blur(10px);
+} */
+
+.myuki-gcard_mask.hidden {
+	display: none;
+}
+
+.blur {
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
+
+}
+
+.myuki-gcard_box {
+	min-width: 320px;
+	box-sizing: border-box;
+	margin: 10% auto 0;
+	background-color: #f1f2f6;
+	padding: 32px;
+	border-radius: 16px;
+	z-index: inherit;
+	-webkit-animation: swing-in-top-fwd 0.8s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+	animation: swing-in-top-fwd 0.8s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+.myuki-gcard_box * {
+	box-sizing: border-box;
+}
+
+.myuki-gcard_box.closed {
+	-webkit-animation: swing-out-top-bck 0.45s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+	animation: swing-out-top-bck 0.45s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+}
+
+.myuki-gcard_box a {
+	text-decoration: none;
+}
+
+.myuki-gcard_icon {
+	margin: 0 auto 8px;
+	height: 64px;
+	width: 64px;
+	border-radius: 50%;
+	overflow: hidden;
+	transition: all .4s ease-in-out;
+
+}
+
+.myuki-gcard_icon:hover {
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.6);
+	transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+}
+
+.myuki-gcard_icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.myuki-gcard_title {
+	font-size: 1.3em;
+	font-weight: bold;
+	text-align: center;
+	-webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+.myuki-gcard_title a {
+	text-decoration: none;
+	color: #2f3542;
+	margin: 8px auto;
+}
+
+.myuki-gcard_info {
+	text-align: center;
+	color: #747d8c;
+	font-size: .8em;
+	-webkit-animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	margin: 4px auto;
+}
+
+.myuki-gcard_btn-list {
+	padding: 8px;
+	white-space: nowrap;
+	box-sizing: border-box;
+}
+
+.myuki-gcard_btn {
+	display: block;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	color: #ffffff;
+	background-color: #57606f;
+	border-radius: 8px;
+	margin-bottom: 4px;
+	cursor: pointer;
+	white-space: nowrap;
+	/* border: 2px solid #57606f; */
+	border: none;
+	outline: none;
+	transition: all .3s ease-in-out;
+	font-size: 1em;
+	padding: 4px;
+	overflow: hidden;
+}
+
+.myuki-gcard_btn:hover {
+	background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+	animation: slidebg 2s linear infinite;
+}
+
+.myuki-gcard_btn.btn-close {
+	background-color: #f1f2f6;
+	color: #57606f;
+	border: 2px solid #57606f;
+}
+
+.myuki-gcard_btn.btn-close:hover {
+	background: #57606f;
+	color: #ffffff;
+}
+
+.btn-default:hover{
+	box-shadow: 0px 0px 8px #57606f;
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #0d6efd;
+	border-color: #0d6efd;
+}
+
+
+.btn-primary:hover {
+	box-shadow: 0px 0px 8px #0d6efd;
+}
+
+.btn-secondary {
+	color: #fff;
+	background-color: #6c757d;
+	border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+	box-shadow: 0px 0px 8px #6c757d;
+}
+
+.btn-success {
+	color: #fff;
+	background-color: #198754;
+	border-color: #198754;
+}
+
+.btn-success:hover {
+	box-shadow: 0px 0px 8px #198754;
+}
+
+.btn-danger {
+	color: #fff;
+	background-color: #dc3545;
+	border-color: #dc3545;
+}
+
+.btn-danger:hover {
+	box-shadow: 0px 0px 8px #dc3545;
+}
+
+.btn-warning {
+	color: #000;
+	background-color: #ffc107;
+	border-color: #ffc107;
+}
+
+.btn-warning:hover {
+	box-shadow: 0px 0px 8px #ffc107;
+}
+
+.btn-info {
+	color: #000;
+	background-color: #0dcaf0;
+	border-color: #0dcaf0;
+}
+
+.btn-info:hover {
+	box-shadow: 0px 0px 8px #0dcaf0;
+}
+
+.btn-light {
+	color: #000;
+	background-color: #f8f9fa;
+	border-color: #f8f9fa;
+}
+
+.btn-light:hover {
+	box-shadow: 0px 0px 8px #f8f9fa;
+}
+
+.btn-dark {
+	color: #fff;
+	background-color: #212529;
+	border-color: #212529;
+}
+
+.btn-danger:hover {
+	box-shadow: 0px 0px 8px #212529;
+}
+
+.btn-link {
+	font-weight: 400;
+	color: #0d6efd;
+	text-decoration: underline;
+}
+
+.btn-link:hover {
+	box-shadow: 0px 0px 8px #0d6efd;
+}
+
+.myuki-gcard_mini{
+	position: fixed;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	overflow: hidden;
+	transition: all .4s ease-in-out;
+	bottom: 0;
+	left: 50%;
+	transform:translate(-50%, 100%) rotate(0deg) ;
+	cursor: pointer;
+}
+.myuki-gcard_mini.shown{
+	left: 50%;
+	transform:translate(-50%,0) rotate(0deg) ;
+	-webkit-transform: translate(-50%, 0) rotate(0deg);
+}
+.myuki-gcard_mini:hover{
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.6);
+	transform:translate(-50%,0) rotate(360deg) ;
+	-webkit-transform: translate(-50%, 0) rotate(360deg);
+}
+.myuki-gcard_mini img{
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+@media (max-width: 768px) {
+	.myuki-gcard_box {
+		min-width: 80%;
+	}
+}
+
+@-webkit-keyframes slidebg {
+	to {
+		background-position: 20vw;
+	}
+}
+
+@keyframes slidebg {
+	to {
+		background-position: 20vw;
+	}
+}
+
+/**
+			 * ----------------------------------------
+			 * animation tracking-in-expand
+			 * ----------------------------------------
+			 */
+@-webkit-keyframes tracking-in-expand {
+	0% {
+		letter-spacing: -0.5em;
+		opacity: 0;
+	}
+
+	40% {
+		opacity: 0.6;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes tracking-in-expand {
+	0% {
+		letter-spacing: -0.5em;
+		opacity: 0;
+	}
+
+	40% {
+		opacity: 0.6;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+/**
+			 * ----------------------------------------
+			 * animation tracking-in-contract
+			 * ----------------------------------------
+			 */
+@-webkit-keyframes tracking-in-contract {
+	0% {
+		letter-spacing: 1em;
+		opacity: 0;
+	}
+
+	40% {
+		opacity: 0.6;
+	}
+
+	100% {
+		letter-spacing: normal;
+		opacity: 1;
+	}
+}
+
+@keyframes tracking-in-contract {
+	0% {
+		letter-spacing: 1em;
+		opacity: 0;
+	}
+
+	40% {
+		opacity: 0.6;
+	}
+
+	100% {
+		letter-spacing: normal;
+		opacity: 1;
+	}
+}
+
+/**
+			 * ----------------------------------------
+			 * animation swing-out-top-bck
+			 * ----------------------------------------
+			 */
+@-webkit-keyframes swing-out-top-bck {
+	0% {
+		-webkit-transform: rotateX(0deg);
+		transform: rotateX(0deg);
+		-webkit-transform-origin: top;
+		transform-origin: top;
+		opacity: 1;
+	}
+
+	100% {
+		-webkit-transform: rotateX(-100deg);
+		transform: rotateX(-100deg);
+		-webkit-transform-origin: top;
+		transform-origin: top;
+		opacity: 0;
+	}
+}
+
+@keyframes swing-out-top-bck {
+	0% {
+		-webkit-transform: rotateX(0deg);
+		transform: rotateX(0deg);
+		-webkit-transform-origin: top;
+		transform-origin: top;
+		opacity: 1;
+	}
+
+	100% {
+		-webkit-transform: rotateX(-100deg);
+		transform: rotateX(-100deg);
+		-webkit-transform-origin: top;
+		transform-origin: top;
+		opacity: 0;
+	}
+}
+
+/**
+			 * ----------------------------------------
+			 * animation swing-in-top-fwd
+			 * ----------------------------------------
+			 */
+@-webkit-keyframes swing-in-top-fwd {
+	0% {
+		-webkit-transform: rotateX(-140deg);
+		transform: rotateX(-140deg);
+		-webkit-transform-origin: top;
+		transform-origin: top;
+		opacity: 0;
+	}
+
+	100% {
+		-webkit-transform: rotateX(0deg);
+		transform: rotateX(0deg);
+		-webkit-transform-origin: top;
+		transform-origin: top;
+		opacity: 1;
+	}
+}
+
+@keyframes swing-in-top-fwd {
+	0% {
+		-webkit-transform: rotateX(-140deg);
+		transform: rotateX(-140deg);
+		-webkit-transform-origin: top;
+		transform-origin: top;
+		opacity: 0;
+	}
+
+	100% {
+		-webkit-transform: rotateX(0deg);
+		transform: rotateX(0deg);
+		-webkit-transform-origin: top;
+		transform-origin: top;
+		opacity: 1;
+	}
+}
