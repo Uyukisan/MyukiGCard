@@ -1,39 +1,52 @@
-# Myuki Navigation Card 
-> 一个简洁美观的个人导航主页、卡片
+# MyukiGCard 
+> 一个简洁美观的个人导航主页、链接卡片
 
-⛄️：可以是一张名片、个人网址的导航主页、或是作为网站的引导页等等。
+⛄️：可以是一张名片，个人网址的导航主页、介绍页、或是作为网站的引导页、消息弹框等等。
 
-## 简单用法
+## 用法
 
-```javascript
+```html
 <link rel="stylesheet" href="./css/MyukiGCard.css">
 <script src="./js/MyukiGCard.js"></script>
 ```
 
 ```html
 <script>
-  // window.MyNavCard = $MGC();
-window.MyNavCard = $MGC({
+//简单用法
+//window.mgc = $MGC();
+//高级用法
+window.mgc = $MGC({
 	icon: "https://stackblog.cf/img/avatar.jpg",
 	/*
-	icon:头像或者网站logo
+	icon: 可以是头像、网站logo等
 	*/
 	name: "Stack Dev",
 	/*
-	name: 名字或者网站名称
+	name: 可是是名字、网站名称等
 	*/
-	info: "欢迎使用Myuki Guidance Card",
+	info: "欢迎使用MyukiGCard",
 	/*
-	info:个性签名、网站信息、口号等
+	info: 个性签名、网站口号、信息等
 	*/
 	z_index: 9999,
 	/*
-	默认值: 9999
+	不用解释，默认值为9999
 	*/
 	blur: ".container",
 	/*
-	blur:想要模糊化处理的页面元素
-	可选值： .className、#idName、tagName
+	blur: 想要模糊化处理的页面元素，取值可以是.className（类名）、#idName（id属性值）、tagName（标签名）
+	*/
+	lang: "en-US",
+	/*
+	lang: 语言设置，目前和关闭按钮的文本有关
+	默认值: zh-CN
+	可选值: zh-CN,zh-TW,en-US
+	如果不提供或者提供的不在可选值内，将使用默认值或者使用html页面的lang属性
+	*/
+	mini: true,
+	/*
+	mini: 迷你按钮，用于重新打开MyukiGCard（在页面底部中间位置）
+	默认值: true
 	*/
 	links: [{
 		"title": "My Blog",
@@ -43,16 +56,16 @@ window.MyNavCard = $MGC({
 		"title": "My GitHub",
 		"url": "http://github.com/Uyukisan"
 	}, {
-		"title": "My jq22",
-		"url": "https://www.jq22.com/mem1320295"
-	}]
+		"title": "MyukiGCard Usage",
+		"url": "https://github.com/Uyukisan/MyukiGCard",
+	}],
 	/*
-	网址导航
-	title：导航的名称
-	url：网址
-	type: 导航按钮的样式
-	type的取值包括：
+	导航链接列表
+	title: 链接的标题
+	url: 链接地址
+	type: 链接按钮的类型，包括：
 	default | primary | secondary | success | danger | waring | info | light | dark | link
+	如果不提供type，默认为dafault
 	*/
 });
 
@@ -84,4 +97,5 @@ function openCallBack() {
 
 ## 预览
 
-[Myuki Navigation Card](https://stackblog.cf)
+[MyukiGCard](https://uyukisan.github.io/MyukiGCard/)
+

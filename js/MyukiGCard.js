@@ -13,6 +13,8 @@
 		info: "欢迎使用Myuki Guidance Card",
 		z_index: 9999,
 		blur: ".container",
+		lang: "zh-CN",
+		mini: true,
 		links: [{
 			"title": "My Blog",
 			"url": "https://stackblog.cf/",
@@ -25,6 +27,11 @@
 			"url": "https://www.jq22.com/mem1320295"
 		}]
 	};
+	var i18n = new Map([
+		["zh-CN",{"close":"关闭窗口"}],
+		["zh-TW",{"close":"關閉窗口"}],
+		["en-US",{"close":"Ignore it"}]
+	]);
 	Object.freeze(defaultSetting);
 	var MyukiGCard = function(option, undefined) {
 		return new MyukiGCard.fn.init(option, undefined);
@@ -75,7 +82,8 @@
 			closeBtn.setAttribute("href", "javascript: void (0);");
 			closeBtn.setAttribute("id", "myuki-gcard_close");
 			closeBtn.setAttribute("btn-type", "btn-close");
-			closeBtn.innerText = "关闭窗口";
+			let lang = i18n.get(this._setting.lang) ? this._setting.lang : document.documentElement.lang != "" ? document.documentElement.lang : defaultSetting.lang;
+			closeBtn.innerText = i18n.get(lang) ? i18n.get(lang).close : i18n.get(defaultSetting.lang).close;
 			let _this = this;
 			closeBtn.addEventListener("click",function(){
 				_this.close();
@@ -84,18 +92,20 @@
 			cardBox.appendChild(cardBtnList);
 			myukiGCard.appendChild(cardBox);
 			document.body.appendChild(myukiGCard);
-			let cardMini = document.createElement("div");
-			addClass("myuki-gcard_mini", cardMini);
-			let miniImg = document.createElement("img");
-			miniImg.setAttribute("src", this._setting.icon);
-			cardMini.appendChild(miniImg);
-			cardMini.style.zIndex = this._setting.z_index;
-			cardMini.addEventListener("click",function(){
-				_this.open(()=>{
-					removeClass("shown", cardMini);
+			if(this._setting.mini == true){
+				let cardMini = document.createElement("div");
+				addClass("myuki-gcard_mini", cardMini);
+				let miniImg = document.createElement("img");
+				miniImg.setAttribute("src", this._setting.icon);
+				cardMini.appendChild(miniImg);
+				cardMini.style.zIndex = this._setting.z_index;
+				cardMini.addEventListener("click",function(){
+					_this.open(()=>{
+						removeClass("shown", cardMini);
+					});
 				});
-			});
-			document.body.appendChild(cardMini);
+				document.body.appendChild(cardMini);
+			}
 			let container = document.querySelectorAll(this._setting.blur)[0];
 			if(container != undefined){
 				addClass("blur", container);
@@ -161,9 +171,8 @@
 		},
 		
 		help: function() {
-			console.log('%c⛄️欢迎使用Myuki Guidance Card👏',
-				'font-size:14px;border:20px solid #1e90ff;border-radius:10px;background:white;color:black;'
-			);
+			console.log("⛄️欢迎使用MyukiGCard:",{"autor": "Stack Dev","github":"https://github.com/Uyukisan", "usage": "https://github.com/Uyukisan/MyukiGCard", "preview": "https://uyukisan.github.io/MyukiGCard/"});
+			return {"autor": "Stack Dev","github":"https://github.com/Uyukisan", "usage": "https://github.com/Uyukisan/MyukiGCard", "preview": "https://uyukisan.github.io/MyukiGCard/"};
 		}
 	}
 
