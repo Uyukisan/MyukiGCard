@@ -4,7 +4,7 @@
 	left: 0;
 	bottom: 0;
 	right: 0;
-	background: rgba(0, 0, 0, 0.4);
+	/* background: rgba(0, 0, 0, 0.4); */
 	display: flex;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -16,15 +16,16 @@
 	box-sizing: border-box;
 }
 
-/* 
-.myuki-gcard_mask::after {
+
+/* .myuki-gcard_mask::after {
 	content: "";
 	position: absolute;
 	left: -100px;
 	top: -100px;
 	right: -100px;
 	bottom: -100px;
-	background-color: rgba(255, 255, 255, 0.4);
+	background-image: url(https://th.wallhaven.cc/small/zy/zygeko.jpg);
+	background-size: cover;
 	background-attachment: fixed;
 	z-index: 9998;
 	-webkit-filter: blur(10px);
@@ -56,6 +57,7 @@
 	-webkit-animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 	animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 }
+
 
 .myuki-gcard_box * {
 	box-sizing: border-box;
@@ -157,7 +159,7 @@
 	color: #ffffff;
 }
 
-.btn-default:hover{
+.btn-default:hover {
 	box-shadow: 0px 0px 8px #57606f;
 }
 
@@ -252,7 +254,7 @@
 	box-shadow: 0px 0px 8px #0d6efd;
 }
 
-.myuki-gcard_mini{
+.myuki-gcard_mini {
 	position: fixed;
 	width: 64px;
 	height: 64px;
@@ -261,20 +263,23 @@
 	transition: all .4s ease-in-out;
 	bottom: 0;
 	left: 50%;
-	transform:translate(-50%, 100%) rotate(0deg) ;
+	transform: translate(-50%, 100%) rotate(0deg);
 	cursor: pointer;
 }
-.myuki-gcard_mini.shown{
+
+.myuki-gcard_mini.shown {
 	left: 50%;
-	transform:translate(-50%,0) rotate(0deg) ;
+	transform: translate(-50%, 0) rotate(0deg);
 	-webkit-transform: translate(-50%, 0) rotate(0deg);
 }
-.myuki-gcard_mini:hover{
+
+.myuki-gcard_mini:hover {
 	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.6);
-	transform:translate(-50%,0) rotate(360deg) ;
+	transform: translate(-50%, 0) rotate(360deg);
 	-webkit-transform: translate(-50%, 0) rotate(360deg);
 }
-.myuki-gcard_mini img{
+
+.myuki-gcard_mini img {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
@@ -449,5 +454,54 @@
 		-webkit-transform-origin: top;
 		transform-origin: top;
 		opacity: 1;
+	}
+}
+
+.myuki-gcard_box.darkmode {
+	background-color: #2f3542;
+}
+
+.myuki-gcard_box.darkmode .myuki-gcard_title {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.myuki-gcard_box.darkmode .myuki-gcard_info {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.myuki-gcard_box.darkmode .myuki-gcard_icon:hover {
+	box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.6);
+}
+
+.myuki-gcard_box.darkmode .myuki-gcard_btn.btn-close {
+	background-color: #a4b0be;
+	color: rgba(255, 255, 255, 0.8);
+}
+
+/* @media screen and (prefers-color-scheme:dark) {
+	.myuki-gcard_box{
+		background-color: #2f3542;
+	}
+	.myuki-gcard_title{
+		color: rgba(255, 255, 255, 0.7);
+	}
+	.myuki-gcard_info{
+		color: rgba(255, 255, 255, 0.5);
+	}
+	.myuki-gcard_icon:hover{
+		box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.6);
+	}
+	.myuki-gcard_mini:hover{
+		box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.6);
+	}
+	.myuki-gcard_btn.btn-close{
+		background-color: #a4b0be;
+		color: rgba(255, 255, 255, 0.8);
+	}
+}
+ */
+@media screen and (prefers-color-scheme:dark) {
+	.myuki-gcard_mini:hover {
+		box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.6);
 	}
 }

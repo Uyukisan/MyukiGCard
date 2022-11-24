@@ -15,6 +15,7 @@
 		blur: ".container",
 		lang: "zh-CN",
 		mini: true,
+		darkmode: 1,
 		links: [{
 			"title": "My Blog",
 			"url": "https://stackblog.cf/",
@@ -32,6 +33,7 @@
 		["zh-TW",{"close":"關閉窗口"}],
 		["en-US",{"close":"Ignore it"}]
 	]);
+	var darkmode = [0, 1, 2, 3];
 	Object.freeze(defaultSetting);
 	var MyukiGCard = function(option, undefined) {
 		return new MyukiGCard.fn.init(option, undefined);
@@ -90,6 +92,25 @@
 			});
 			cardBtnList.appendChild(closeBtn);
 			cardBox.appendChild(cardBtnList);
+			// darkmode
+			let dmode = darkmode.includes(this._setting.darkmode) ? this._setting.darkmode : defaultSetting.darkmode;
+			switch(dmode){
+				case 0:
+					removeClass("darkmode", cardBox);
+					break;
+				case 1:
+					window.matchMedia("(prefers-color-scheme: dark)").matches ? addClass("darkmode", cardBox) : "";
+					break;
+				case 2:
+					let hour = new Date().getHours();
+					hour <6 || hour>=18 ? addClass("darkmode", cardBox) : "";
+					break;
+				case 3:
+					addClass("darkmode", cardBox);
+				default:
+					break;
+					
+			}
 			myukiGCard.appendChild(cardBox);
 			document.body.appendChild(myukiGCard);
 			if(this._setting.mini == true){
@@ -110,7 +131,7 @@
 			if(container != undefined){
 				addClass("blur", container);
 			}
-
+			
 			this._GCard = myukiGCard;
 			return this;
 		},
@@ -123,7 +144,7 @@
 			if(!this._closed){
 				this._closed = true;
 			}else{
-				console.log("Myuki Guidance has been closed.");
+				console.log("MyukiGCard has been closed.");
 				return;
 			}
 			let GCard = this._GCard;
@@ -153,7 +174,7 @@
 			if(this._closed){
 				this._closed = false;
 			}else{
-				console.log("Myuki Guidance has been opened.");
+				console.log("MyukiGCard has been opened.");
 				return;
 			}
 			let GCard = this._GCard;

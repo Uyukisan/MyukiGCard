@@ -49,6 +49,16 @@
 					mini: 迷你按钮，用于重新打开MyukiGCard（在页面底部中间位置）
 					默认值: true
 					*/
+					darkmode: 2,
+					/*
+					darkmode: 夜间模式
+					默认值: 1
+					可选值: 0、1、2、3
+					0: 禁用夜间模式
+					1: 跟随系统（如果系统支持夜间模式）
+					2: 根据时间，下午6时～上午6时打开夜间模式
+					3: 常开夜间模式
+					*/
 					links: [{
 						"title": "My Blog",
 						"url": "https://stackblog.cf/",
@@ -71,9 +81,6 @@
 				});
 			});
 		</script>
-		<style>
-			.container {}
-		</style>
 		<style type='text/css'>
 			html {
 				overflow-x: initial !important;
@@ -86,7 +93,9 @@
 				--select-text-font-color: auto;
 				--monospace: "Lucida Console", Consolas, "Courier", monospace;
 				--title-bar-height: 20px;
+				--code-bg: #f3f4f4;
 			}
+
 
 			.mac-os-11 {
 				--title-bar-height: 28px;
@@ -127,6 +136,28 @@
 				background-size: 109px 109px, 109px 109px, 100% 6px, 109px 109px, 109px 109px;
 				background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
 				background-attachment: fixed;
+			}
+
+			@media screen and (prefers-color-scheme:dark) {
+				:root {
+					--bg-color: #121212;
+					--text-color: #ffffff;
+					--code-bg: rgba(255, 255, 255, 0.4);
+				}
+
+				body {
+					background:
+						radial-gradient(black 3px, transparent 4px),
+						radial-gradient(black 3px, transparent 4px),
+						linear-gradient(#2f3542 4px, transparent 0),
+						linear-gradient(45deg, transparent 74px, transparent 75px, #a4a4a4 75px, #a4a4a4 76px, transparent 77px, transparent 109px),
+						linear-gradient(-45deg, transparent 75px, transparent 76px, #a4a4a4 76px, #a4a4a4 77px, transparent 78px, transparent 109px),
+						#2f3542;
+
+					background-size: 109px 109px, 109px 109px, 100% 6px, 109px 109px, 109px 109px;
+					background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+					background-attachment: fixed;
+				}
 			}
 
 			iframe {
@@ -1820,7 +1851,7 @@
 			code,
 			tt {
 				border: 1px solid #e7eaed;
-				background-color: #f8f8f8;
+				background-color: var(--code-bg);
 				border-radius: 3px;
 				padding: 0;
 				padding: 2px 4px 0px 4px;
@@ -1828,7 +1859,7 @@
 			}
 
 			code {
-				background-color: #f3f4f4;
+				background-color: var(--code-bg);
 				padding: 0 2px 0 2px;
 			}
 
@@ -1856,7 +1887,7 @@
 			}
 
 			.md-fences {
-				background-color: #f8f8f8;
+				background-color: var(--code-bg);
 			}
 
 			#write pre.md-meta-block {
@@ -2001,7 +2032,7 @@
 				}
 			}
 		</style>
-		<title>README</title>
+		<title>MyukiGCard</title>
 	</head>
 	<body class='typora-export'>
 		<div class='typora-export-content'>
@@ -2035,11 +2066,11 @@
 		<pre class=" CodeMirror-line "
 			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//简单用法</span></span></pre>
 		<pre class=" CodeMirror-line "
-			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//window.mgc = $MGC();</span></span></pre>
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//window.MyNavCard = $MGC();</span></span></pre>
 		<pre class=" CodeMirror-line "
 			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//高级用法</span></span></pre>
 		<pre class=" CodeMirror-line "
-			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">window</span>.<span class="cm-property">mgc</span> <span class="cm-operator">=</span> <span class="cm-variable">$MGC</span>({</span></pre>
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">window</span>.<span class="cm-property">MyNavCard</span> <span class="cm-operator">=</span> <span class="cm-variable">$MGC</span>({</span></pre>
 		<pre class=" CodeMirror-line "
 			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">icon</span>: <span class="cm-string">"https://stackblog.cf/img/avatar.jpg"</span>,</span></pre>
 		<pre class=" CodeMirror-line "
@@ -2105,6 +2136,26 @@
 		<pre class=" CodeMirror-line "
 			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
 		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">darkmode</span>: <span class="cm-number">2</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>darkmode: 夜间模式</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: 1</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>可选值: 0、1、2、3</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>0: 禁用夜间模式</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>1: 跟随系统（如果系统支持夜间模式）</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>2: 根据时间，下午6时～上午6时打开夜间模式</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>3: 常开夜间模式</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
 			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">links</span>: [{</span></pre>
 		<pre class=" CodeMirror-line "
 			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"title"</span>: <span class="cm-string">"My Blog"</span>,</span></pre>
@@ -2144,6 +2195,8 @@
 			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
 		<pre class=" CodeMirror-line "
 			role="presentation"><span role="presentation" style="padding-right: 0.1px;">});</span></pre>
+		<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre>
 		<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre>
 		<pre class=" CodeMirror-line "
@@ -2200,9 +2253,9 @@
 		</div>
 		</div>
 		<div
-			style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 1848px;">
+			style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 2090px;">
 		</div>
-		<div class="CodeMirror-gutters" style="display: none; height: 1848px;"></div>
+		<div class="CodeMirror-gutters" style="display: none; height: 2090px;"></div>
 		</div>
 		</div>
 		</pre>
@@ -2211,54 +2264,5 @@
 		<p>&nbsp;</p>
 		</div>
 		</div>
-		<a href="https://github.com/Uyukisan/MyukiGCard" class="github-corner" aria-label="View source on GitHub">
-			<svg width="80" height="80" viewBox="0 0 250 250"
-				style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
-				<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-				<path
-					d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-					fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm">
-				</path>
-				<path
-					d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-					fill="currentColor" class="octo-body">
-				</path>
-			</svg>
-		</a>
-
-		<style>
-			.github-corner:hover .octo-arm {
-				animation: octocat-wave 560ms ease-in-out
-			}
-
-			@keyframes octocat-wave {
-
-				0%,
-				100% {
-					transform: rotate(0)
-				}
-
-				20%,
-				60% {
-					transform: rotate(-25deg)
-				}
-
-				40%,
-				80% {
-					transform: rotate(10deg)
-				}
-			}
-
-			@media (max-width:500px) {
-				.github-corner:hover .octo-arm {
-					animation: none
-				}
-
-				.github-corner .octo-arm {
-					animation: octocat-wave 560ms ease-in-out
-				}
-			}
-		</style>
-
 	</body>
 </html>

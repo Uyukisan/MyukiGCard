@@ -13,9 +13,9 @@
 ```html
 <script>
 //简单用法
-//window.mgc = $MGC();
+//window.MyNavCard = $MGC();
 //高级用法
-window.mgc = $MGC({
+window.MyNavCard = $MGC({
 	icon: "https://stackblog.cf/img/avatar.jpg",
 	/*
 	icon: 可以是头像、网站logo等
@@ -48,6 +48,16 @@ window.mgc = $MGC({
 	mini: 迷你按钮，用于重新打开MyukiGCard（在页面底部中间位置）
 	默认值: true
 	*/
+	darkmode: 2,
+	/*
+	darkmode: 夜间模式
+	默认值: 1
+	可选值: 0、1、2、3
+	0: 禁用夜间模式
+	1: 跟随系统（如果系统支持夜间模式）
+	2: 根据时间，下午6时～上午6时打开夜间模式
+	3: 常开夜间模式
+	*/
 	links: [{
 		"title": "My Blog",
 		"url": "https://stackblog.cf/",
@@ -68,6 +78,7 @@ window.mgc = $MGC({
 	如果不提供type，默认为dafault
 	*/
 });
+
 
 /*
  方法：close()
