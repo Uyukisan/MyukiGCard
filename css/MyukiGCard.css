@@ -117,6 +117,16 @@
 	margin: 4px auto;
 }
 
+.myuki-gcard_hitokoto {
+	text-decoration: none;
+	color: #70a1ff;
+}
+
+.myuki-gcard_hitokoto a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
 .myuki-gcard_btn-list {
 	padding: 8px;
 	white-space: nowrap;
@@ -288,6 +298,8 @@
 @media (max-width: 768px) {
 	.myuki-gcard_box {
 		min-width: 80%;
+		width: 80%;
+		max-width: 80%;
 	}
 }
 
