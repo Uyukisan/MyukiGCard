@@ -15,7 +15,7 @@
 //简单用法
 //window.MyNavCard = $MGC();
 //高级用法
-window.MyNavCard = $MGC({
+window.mgc = $MGC({
 	icon: "https://stackblog.cf/img/avatar.jpg",
 	/*
 	icon: 可以是头像、网站logo等
@@ -106,6 +106,19 @@ window.MyNavCard = $MGC({
 	}, {
 		"title": "MyukiGCard Usage",
 		"url": "https://github.com/Uyukisan/MyukiGCard",
+	}, {
+		"title": "按钮点击事件",
+		"type": "success",
+		"url": "https://stackblog.cf/",
+		"func": function() {
+			//mgc.close();
+			let cval = confirm("你点击了我，3s后跳转网页？");
+			if (cval) {
+				setTimeout(function() {
+					location.href = "https://stackblog.cf/"
+				}, 3000);
+			};
+		}
 	}],
 	/*
 	导航链接列表
@@ -119,6 +132,8 @@ window.MyNavCard = $MGC({
 	target: 在何处打开链接，包括：
 	_blank（新窗口）| _self(默认) | _parent(父框架) | _top(整个窗口) | framename(指定的框架)
 	如果不提供target，将使用默认
+	
+	func: 按钮点击事件，设置func会导致url失效，可以在自定义方法中添加跳转语句,或者不设置url
 	*/
 });
 

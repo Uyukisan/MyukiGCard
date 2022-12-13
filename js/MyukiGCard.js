@@ -126,8 +126,10 @@
 				links[i].type ? btn.setAttribute("btn-type", links[i].type) : btn.setAttribute("btn-type",
 					"btn-default");
 				links[i].target ? btn.setAttribute("target", links[i].target) : "";
-				btn.setAttribute("href", links[i].url);
+				links[i].url && !links[i].func ? btn.setAttribute("href", links[i].url) : btn.setAttribute("href", "javascript: void (0);");
 				btn.innerText = links[i].title;
+				//添加按钮点击事件
+				links[i].func && typeof links[i].func == 'function' ? btn.addEventListener('click',links[i].func) : "";
 				cardBtnList.appendChild(btn);
 			}
 			let closeBtn = document.createElement("a");
@@ -237,6 +239,7 @@
 			}
 			let GCard = this._GCard;
 			let cardBox = GCard.querySelectorAll(".myuki-gcard_box")[0];
+			let cardMini = document.querySelectorAll(".myuki-gcard_mini")[0];
 			removeClass("hidden", GCard);
 
 			removeClass("closed", cardBox);
@@ -244,6 +247,7 @@
 			if (container != undefined) {
 				addClass("blur", container);
 			}
+			cardMini != undefined ? removeClass("shown", cardMini) : "";
 			if (typeof opencallback == "function") {
 				opencallback();
 			}
@@ -272,7 +276,7 @@
 			target = {};
 		}
 		if (length == 1) {
-			target = _this;
+			target = this;
 			i--;
 		}
 		for (var i = 1; i < length; i++) {

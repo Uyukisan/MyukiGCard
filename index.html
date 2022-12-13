@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="utf-8">
 		<meta name="author" content="Stack Dev">
 		<meta name="copyright" content="Stack Dev">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -107,6 +107,18 @@
 					}, {
 						"title": "MyukiGCard Usage",
 						"url": "https://github.com/Uyukisan/MyukiGCard",
+					}, {
+						"title": "按钮点击事件",
+						"type": "success",
+						"url": "https://stackblog.cf/",
+						"func": function() {
+							let cval = confirm("你点击了我，3s后跳转网页？");
+							if (cval) {
+								setTimeout(function() {
+									location.href = "https://stackblog.cf/"
+								}, 3000);
+							};
+						}
 					}],
 					/*
 					导航链接列表
@@ -120,11 +132,13 @@
 					target: 在何处打开链接，包括：
 					_blank（新窗口）| _self(默认) | _parent(父框架) | _top(整个窗口) | framename(指定的框架)
 					如果不提供target，将使用默认
+					
+					func: 按钮点击事件，设置func会导致url失效，可以在自定义方法中添加跳转语句,或者不设置url
 					*/
 				});
 			});
 		</script>
-		<style type='text/css'>
+		<style type="text/css">
 			html {
 				overflow-x: initial !important;
 			}
@@ -160,15 +174,15 @@
 				font-size: 1rem;
 				line-height: 1.42857143;
 				/* overflow-x: hidden;
-				background-image: inherit;
-				background-size: inherit;
-				background-attachment: inherit;
-				background-origin: inherit;
-				background-clip: inherit;
-				background-color: inherit;
-				tab-size: 4;
-				background-position: inherit;
-				background-repeat: inherit; */
+					background-image: inherit;
+					background-size: inherit;
+					background-attachment: inherit;
+					background-origin: inherit;
+					background-clip: inherit;
+					background-color: inherit;
+					tab-size: 4;
+					background-position: inherit;
+					background-repeat: inherit; */
 				background:
 					radial-gradient(black 3px, transparent 4px),
 					radial-gradient(black 3px, transparent 4px),
@@ -1754,21 +1768,21 @@
 			}
 
 			/*@media print {
-    .typora-export h1,
-    .typora-export h2 {
-        border-bottom: none;
-        padding-bottom: initial;
-    }
-
-    .typora-export h1::after,
-    .typora-export h2::after {
-        content: "";
-        display: block;
-        height: 100px;
-        margin-top: -96px;
-        border-top: 1px solid #eee;
-    }
-}*/
+	    .typora-export h1,
+	    .typora-export h2 {
+	        border-bottom: none;
+	        padding-bottom: initial;
+	    }
+	
+	    .typora-export h1::after,
+	    .typora-export h2::after {
+	        content: "";
+	        display: block;
+	        height: 100px;
+	        margin-top: -96px;
+	        border-top: 1px solid #eee;
+	    }
+	}*/
 
 			h3 {
 				font-size: 1.5em;
@@ -2033,8 +2047,8 @@
 			}
 
 			/*.html-for-mac {
-    --item-hover-bg-color: #E6F0FE;
-}*/
+	    --item-hover-bg-color: #E6F0FE;
+	}*/
 
 			#md-notification .btn {
 				border: 0;
@@ -2104,27 +2118,21 @@
 		</div>
 		</pre>
 		<pre class="md-fences md-end-block ty-contain-cm modeLoaded md-focus" spellcheck="false" lang="html"
-			style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap CodeMirror-focused" lang="html"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 493px; left: 134.0302734375px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre>
+			style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap CodeMirror-focused" lang="html"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 2231px; left: 209.640625px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre>x</pre>
 		</div>
 		<div class="CodeMirror-measure"></div>
 		<div style="position: relative; z-index: 1;"></div>
 		<div class="CodeMirror-code" role="presentation" style="">
-			<div class="" style="position: relative;">
-				<pre class=" CodeMirror-line "
-					role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span></span></pre>
-			</div>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span></span></pre>
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//简单用法</span></span></pre>
-			<div class="" style="position: relative;">
-				<pre class=" CodeMirror-line "
-					role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//window.MyNavCard = $MGC();</span></span></pre>
-			</div>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//window.MyNavCard = $MGC();</span></span></pre>
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//高级用法</span></span></pre>
-			<div class="" style="position: relative;">
-				<pre class=" CodeMirror-line "
-					role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">window</span>.<span class="cm-property">MyNavCard</span> <span class="cm-operator">=</span> <span class="cm-variable">$MGC</span>({</span></pre>
-			</div>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">window</span>.<span class="cm-property">mgc</span> <span class="cm-operator">=</span> <span class="cm-variable">$MGC</span>({</span></pre>
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">icon</span>: <span class="cm-string">"https://stackblog.cf/img/avatar.jpg"</span>,</span></pre>
 			<pre class=" CodeMirror-line "
@@ -2159,10 +2167,8 @@
 				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>不用解释，默认值为9999</span></span></pre>
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<div class="" style="position: relative;">
-				<pre class=" CodeMirror-line "
-					role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">blur</span>: <span class="cm-string">"#</span><span class="cm-string">write</span><span class="cm-string">"</span>,</span></pre>
-			</div>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">blur</span>: <span class="cm-string">"#write"</span>,</span></pre>
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
 			<pre class=" CodeMirror-line "
@@ -2308,6 +2314,37 @@
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"url"</span>: <span class="cm-string">"https://github.com/Uyukisan/MyukiGCard"</span>,</span></pre>
 			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>}, {</span></pre>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"title"</span>: <span class="cm-string">"按钮点击事件"</span>,</span></pre>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"type"</span>: <span class="cm-string">"success"</span>,</span></pre>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"url"</span>: <span class="cm-string">"https://stackblog.cf/"</span>,</span></pre>
+			<div class="CodeMirror-activeline" style="position: relative;">
+				<div class="CodeMirror-activeline-background CodeMirror-linebackground"></div>
+				<div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;">
+				</div>
+				<pre class=" CodeMirror-line "
+					role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"func"</span>: <span class="cm-keyword">function</span>() {</span></pre>
+			</div>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">//mgc.close();</span></span></pre>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">let</span> <span class="cm-def">cval</span> <span class="cm-operator">=</span> <span class="cm-variable">confirm</span>(<span class="cm-string">"你点击了我，3s后跳转网页？"</span>);</span></pre>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">if</span> (<span class="cm-variable-2">cval</span>) {</span></pre>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">setTimeout</span>(<span class="cm-keyword">function</span>() {</span></pre>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">location</span>.<span class="cm-property">href</span> <span class="cm-operator">=</span> <span class="cm-string">"https://stackblog.cf/"</span></span></pre>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>}, <span class="cm-number">3000</span>);</span></pre>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>};</span></pre>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>}</span></pre>
+			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>}],</span></pre>
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
@@ -2334,12 +2371,16 @@
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>如果不提供target，将使用默认</span></span></pre>
 			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span></span></span></pre>
+			<pre class=" CodeMirror-line "
+				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>func: 按钮点击事件，设置func会导致url失效，可以在自定义方法中添加跳转语句,或者不设置url</span></span></pre>
+			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;">});</span></pre>
 			<div class="" style="position: relative;">
 				<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-	</span></span></pre>
+</span></span></pre>
 			</div>
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/*</span></span></pre>
@@ -2348,7 +2389,7 @@
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">*/</span></span></pre>
 			<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-	</span></span></pre>
+</span></span></pre>
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MyNavCard</span>.<span class="cm-property">close</span>();</span></pre>
 			<pre class=" CodeMirror-line "
@@ -2356,7 +2397,7 @@
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MyNavCard</span>.<span class="cm-property">close</span>(<span class="cm-variable">closeCallBack</span>);</span></pre>
 			<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-	</span></span></pre>
+</span></span></pre>
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> <span class="cm-def">closeCallBack</span>() {</span></pre>
 			<pre class=" CodeMirror-line "
@@ -2364,7 +2405,7 @@
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre>
 			<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-	</span></span></pre>
+</span></span></pre>
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/*</span></span></pre>
 			<pre class=" CodeMirror-line "
@@ -2372,7 +2413,7 @@
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">*/</span></span></pre>
 			<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-	</span></span></pre>
+</span></span></pre>
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MyNavCard</span>.<span class="cm-property">open</span>();</span></pre>
 			<pre class=" CodeMirror-line "
@@ -2380,7 +2421,7 @@
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MyNavCard</span>.<span class="cm-property">open</span>(<span class="cm-variable">openCallBack</span>);</span></pre>
 			<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-	</span></span></pre>
+</span></span></pre>
 			<pre class=" CodeMirror-line "
 				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> <span class="cm-def">openCallBack</span>() {</span></pre>
 			<pre class=" CodeMirror-line "
@@ -2395,9 +2436,9 @@
 		</div>
 		</div>
 		<div
-			style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 3058px;">
+			style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 3410px;">
 		</div>
-		<div class="CodeMirror-gutters" style="display: none; height: 3058px;"></div>
+		<div class="CodeMirror-gutters" style="display: none; height: 3410px;"></div>
 		</div>
 		</div>
 		</pre>
