@@ -1,13 +1,15 @@
 <!doctype html>
 <html>
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="utf-8">
 		<meta name="author" content="Stack Dev">
 		<meta name="copyright" content="Stack Dev">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport"
 			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 		<title>MyukiGCard</title>
+		<meta name="description" content="一个简洁美观的个人导航主页、链接卡片">
+		<meta property="og:description" content="一个简洁美观的个人导航主页、链接卡片">
 		<link rel="stylesheet" href="./css/MyukiGCard.css">
 		<link rel="shortcut icon" href="https://stackblog.cf/img/logo.png">
 		<script src="./js/MyukiGCard.js"></script>
@@ -69,6 +71,19 @@
 					/*
 					fontFamily: 字体，为空或不设置将使用默认字体
 					*/
+					closeDuration: 20000,
+					/*
+					关闭MyukiGCard后，多久不再显示（即使刷新页面也不再显示，但仍可通过迷你按钮手动打开）
+					默认值: 60000 (60秒)
+					注: 只有defaultClosed设置为false时，closeDuration才起作用
+					*/
+					defaultClosed: false,
+					/*
+					默认关闭MyukiGCard
+					默认值: false
+					可选值: true / false
+					注: 若defaultClosed为true，将导致closeDuration失效
+					*/
 					hitokoto: {
 						"enable": true,
 						/*
@@ -107,6 +122,18 @@
 					}, {
 						"title": "MyukiGCard Usage",
 						"url": "https://github.com/Uyukisan/MyukiGCard",
+					}, {
+						"title": "按钮点击事件",
+						"type": "success",
+						"url": "https://stackblog.cf/",
+						"func": function() {
+							let cval = confirm("你点击了我，3s后跳转网页？");
+							if (cval) {
+								setTimeout(function() {
+									location.href = "https://stackblog.cf/"
+								}, 3000);
+							};
+						}
 					}],
 					/*
 					导航链接列表
@@ -120,11 +147,13 @@
 					target: 在何处打开链接，包括：
 					_blank（新窗口）| _self(默认) | _parent(父框架) | _top(整个窗口) | framename(指定的框架)
 					如果不提供target，将使用默认
+					
+					func: 按钮点击事件，设置func会导致url失效，可以在自定义方法中添加跳转语句,或者不设置url
 					*/
 				});
 			});
 		</script>
-		<style type='text/css'>
+		<style type="text/css">
 			html {
 				overflow-x: initial !important;
 			}
@@ -160,15 +189,15 @@
 				font-size: 1rem;
 				line-height: 1.42857143;
 				/* overflow-x: hidden;
-				background-image: inherit;
-				background-size: inherit;
-				background-attachment: inherit;
-				background-origin: inherit;
-				background-clip: inherit;
-				background-color: inherit;
-				tab-size: 4;
-				background-position: inherit;
-				background-repeat: inherit; */
+					background-image: inherit;
+					background-size: inherit;
+					background-attachment: inherit;
+					background-origin: inherit;
+					background-clip: inherit;
+					background-color: inherit;
+					tab-size: 4;
+					background-position: inherit;
+					background-repeat: inherit; */
 				background:
 					radial-gradient(black 3px, transparent 4px),
 					radial-gradient(black 3px, transparent 4px),
@@ -1754,21 +1783,21 @@
 			}
 
 			/*@media print {
-    .typora-export h1,
-    .typora-export h2 {
-        border-bottom: none;
-        padding-bottom: initial;
-    }
-
-    .typora-export h1::after,
-    .typora-export h2::after {
-        content: "";
-        display: block;
-        height: 100px;
-        margin-top: -96px;
-        border-top: 1px solid #eee;
-    }
-}*/
+	    .typora-export h1,
+	    .typora-export h2 {
+	        border-bottom: none;
+	        padding-bottom: initial;
+	    }
+	
+	    .typora-export h1::after,
+	    .typora-export h2::after {
+	        content: "";
+	        display: block;
+	        height: 100px;
+	        margin-top: -96px;
+	        border-top: 1px solid #eee;
+	    }
+	}*/
 
 			h3 {
 				font-size: 1.5em;
@@ -2033,8 +2062,8 @@
 			}
 
 			/*.html-for-mac {
-    --item-hover-bg-color: #E6F0FE;
-}*/
+	    --item-hover-bg-color: #E6F0FE;
+	}*/
 
 			#md-notification .btn {
 				border: 0;
@@ -2103,301 +2132,342 @@
 		</div>
 		</div>
 		</pre>
-		<pre class="md-fences md-end-block ty-contain-cm modeLoaded md-focus" spellcheck="false" lang="html"
-			style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap CodeMirror-focused" lang="html"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 493px; left: 134.0302734375px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre>
+		<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="html"
+			style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="html"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span></span></pre>
 		</div>
-		<div class="CodeMirror-measure"></div>
-		<div style="position: relative; z-index: 1;"></div>
-		<div class="CodeMirror-code" role="presentation" style="">
-			<div class="" style="position: relative;">
-				<pre class=" CodeMirror-line "
-					role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span></span></pre>
-			</div>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//简单用法</span></span></pre>
-			<div class="" style="position: relative;">
-				<pre class=" CodeMirror-line "
-					role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//window.MyNavCard = $MGC();</span></span></pre>
-			</div>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//高级用法</span></span></pre>
-			<div class="" style="position: relative;">
-				<pre class=" CodeMirror-line "
-					role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">window</span>.<span class="cm-property">MyNavCard</span> <span class="cm-operator">=</span> <span class="cm-variable">$MGC</span>({</span></pre>
-			</div>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">icon</span>: <span class="cm-string">"https://stackblog.cf/img/avatar.jpg"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>icon: 可以是头像、网站logo等</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">name</span>: <span class="cm-string">"Stack Dev"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>name: 可是是名字、网站名称等</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">info</span>: <span class="cm-string">"欢迎使用MyukiGCard"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>info: 个性签名、网站口号、信息等，为空或者不设置将不显示</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: 空</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">z_index</span>: <span class="cm-number">9999</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>不用解释，默认值为9999</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<div class="" style="position: relative;">
-				<pre class=" CodeMirror-line "
-					role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">blur</span>: <span class="cm-string">"#</span><span class="cm-string">write</span><span class="cm-string">"</span>,</span></pre>
-			</div>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>blur: 想要模糊化处理的页面元素，取值可以是.className（类名）、#idName（id属性值）、tagName（标签名）</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">lang</span>: <span class="cm-string">"en-US"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>lang: 语言设置，目前和关闭按钮的文本有关</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: zh-CN</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>可选值: zh-CN,zh-TW,en-US</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>如果不提供或者提供的不在可选值内，将使用默认值或者使用html页面的lang属性</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">mini</span>: <span class="cm-atom">true</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>mini: 迷你按钮，用于重新打开MyukiGCard（在页面底部中间位置）</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: true</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">darkmode</span>: <span class="cm-number">2</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>darkmode: 夜间模式</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: 1</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>可选值: 0、1、2、3</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>0: 禁用夜间模式</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>1: 跟随系统（如果系统支持夜间模式）</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>2: 根据时间，下午6时～上午6时打开夜间模式</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>3: 常开夜间模式</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">maxWidth</span>: <span class="cm-string">"480px"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>maxWidth: MyukiGCard的最大宽度</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: 480px</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">fontFamily</span>: <span class="cm-string">""</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>fontFamily: 字体，为空或不设置将使用默认字体</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">hitokoto</span>: {</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"enable"</span>: <span class="cm-atom">true</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>enable: 是否启用一言API</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: false</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"cats"</span>: [<span class="cm-string">"d"</span>, <span class="cm-string">"i"</span>, <span class="cm-string">"k"</span>],</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>cats: 句子类型，详见：https://developer.hitokoto.cn/sentence/#句子类型-参数</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: []</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>a: 动画, b: 漫画, c: 游戏, d: 文学, e: 原创, f: 网络, </span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>g: 其他, h: 影视, i: 诗词, j: 网易, k: 哲学, i: 抖机灵</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"offline"</span>: <span class="cm-string">"兰博基尼和法拉利能一样吗？分手！"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>offline: 一言API请求错误时用于替换的离线语句</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"color"</span>: <span class="cm-string">"#70a1ff"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>color: 一言语句颜色</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: #70a1ff</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>},</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>hitokoto: 一言API</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>注: 不兼容IE</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">links</span>: [{</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"title"</span>: <span class="cm-string">"My Blog"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"url"</span>: <span class="cm-string">"https://stackblog.cf/"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"type"</span>: <span class="cm-string">"primary"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"target"</span>: <span class="cm-string">"_blank"</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>}, {</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"title"</span>: <span class="cm-string">"My GitHub"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"url"</span>: <span class="cm-string">"https://github.com/Uyukisan"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>}, {</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"title"</span>: <span class="cm-string">"MyukiGCard Usage"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"url"</span>: <span class="cm-string">"https://github.com/Uyukisan/MyukiGCard"</span>,</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>}],</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>导航链接列表</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>title: 链接的标题</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>url: 链接地址</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span></span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>type: 链接按钮的类型，包括：</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>default | primary | secondary | success | danger | waring | info | light | dark | link</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>如果不提供type，默认为dafault</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span></span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>target: 在何处打开链接，包括：</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>_blank（新窗口）| _self(默认) | _parent(父框架) | _top(整个窗口) | framename(指定的框架)</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>如果不提供target，将使用默认</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;">});</span></pre>
-			<div class="" style="position: relative;">
-				<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//简单用法</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//window.MyNavCard = $MGC();</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//高级用法</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">window</span>.<span class="cm-property">mgc</span> <span class="cm-operator">=</span> <span class="cm-variable">$MGC</span>({</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">icon</span>: <span class="cm-string">"https://stackblog.cf/img/avatar.jpg"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>icon: 可以是头像、网站logo等</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">name</span>: <span class="cm-string">"Stack Dev"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>name: 可是是名字、网站名称等</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">info</span>: <span class="cm-string">"欢迎使用MyukiGCard"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>info: 个性签名、网站口号、信息等，为空或者不设置将不显示</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: 空</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">z_index</span>: <span class="cm-number">9999</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>不用解释，默认值为9999</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">blur</span>: <span class="cm-string">"#write"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>blur: 想要模糊化处理的页面元素，取值可以是.className（类名）、#idName（id属性值）、tagName（标签名）</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">lang</span>: <span class="cm-string">"en-US"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>lang: 语言设置，目前和关闭按钮的文本有关</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: zh-CN</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>可选值: zh-CN,zh-TW,en-US</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>如果不提供或者提供的不在可选值内，将使用默认值或者使用html页面的lang属性</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">mini</span>: <span class="cm-atom">true</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>mini: 迷你按钮，用于重新打开MyukiGCard（在页面底部中间位置）</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: true</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">darkmode</span>: <span class="cm-number">2</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>darkmode: 夜间模式</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: 1</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>可选值: 0、1、2、3</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>0: 禁用夜间模式</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>1: 跟随系统（如果系统支持夜间模式）</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>2: 根据时间，下午6时～上午6时打开夜间模式</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>3: 常开夜间模式</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">maxWidth</span>: <span class="cm-string">"480px"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>maxWidth: MyukiGCard的最大宽度</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: 480px</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">fontFamily</span>: <span class="cm-string">""</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>fontFamily: 字体，为空或不设置将使用默认字体</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-property">closeDuration</span>: <span class="cm-number">20000</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>关闭MyukiGCard后，多久不再显示（即使刷新页面也不再显示，但仍可通过迷你按钮手动打开）</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: 60000 (60秒)</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>注: 只有defaultClosed设置为false时，closeDuration才起作用</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">defaultClosed</span>: <span class="cm-atom">true</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认关闭MyukiGCard</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: false</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>可选值: true / false</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>注: 若defaultClosed为true，将导致closeDuration失效</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">hitokoto</span>: {</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"enable"</span>: <span class="cm-atom">true</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>enable: 是否启用一言API</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: false</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"cats"</span>: [<span class="cm-string">"d"</span>, <span class="cm-string">"i"</span>, <span class="cm-string">"k"</span>],</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>cats: 句子类型，详见：https://developer.hitokoto.cn/sentence/#句子类型-参数</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: []</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>a: 动画, b: 漫画, c: 游戏, d: 文学, e: 原创, f: 网络, </span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>g: 其他, h: 影视, i: 诗词, j: 网易, k: 哲学, i: 抖机灵</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"offline"</span>: <span class="cm-string">"兰博基尼和法拉利能一样吗？分手！"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>offline: 一言API请求错误时用于替换的离线语句</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"color"</span>: <span class="cm-string">"#70a1ff"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>color: 一言语句颜色</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>默认值: #70a1ff</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>},</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>hitokoto: 一言API</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>注: 不兼容IE</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-property">links</span>: [{</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"title"</span>: <span class="cm-string">"My Blog"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"url"</span>: <span class="cm-string">"https://stackblog.cf/"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"type"</span>: <span class="cm-string">"primary"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"target"</span>: <span class="cm-string">"_blank"</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>}, {</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"title"</span>: <span class="cm-string">"My GitHub"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"url"</span>: <span class="cm-string">"https://github.com/Uyukisan"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>}, {</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"title"</span>: <span class="cm-string">"MyukiGCard Usage"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"url"</span>: <span class="cm-string">"https://github.com/Uyukisan/MyukiGCard"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>}, {</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"title"</span>: <span class="cm-string">"按钮点击事件"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"type"</span>: <span class="cm-string">"success"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"url"</span>: <span class="cm-string">"https://stackblog.cf/"</span>,</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string cm-property">"func"</span>: <span class="cm-keyword">function</span>() {</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">//mgc.close();</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">let</span> <span class="cm-def">cval</span> <span class="cm-operator">=</span> <span class="cm-variable">confirm</span>(<span class="cm-string">"你点击了我，3s后跳转网页？"</span>);</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">if</span> (<span class="cm-variable-2">cval</span>) {</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">setTimeout</span>(<span class="cm-keyword">function</span>() {</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">location</span>.<span class="cm-property">href</span> <span class="cm-operator">=</span> <span class="cm-string">"https://stackblog.cf/"</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>}, <span class="cm-number">3000</span>);</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>};</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>}</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>}],</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>导航链接列表</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>title: 链接的标题</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>url: 链接地址</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span></span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>type: 链接按钮的类型，包括：</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>default | primary | secondary | success | danger | waring | info | light | dark | link</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>如果不提供type，默认为dafault</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span></span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>target: 在何处打开链接，包括：</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>_blank（新窗口）| _self(默认) | _parent(父框架) | _top(整个窗口) | framename(指定的框架)</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>如果不提供target，将使用默认</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span></span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>func: 按钮点击事件，设置func会导致url失效，可以在自定义方法中添加跳转语句,或者不设置url</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-comment"><span class="cm-tab" role="presentation" cm-text="	">  </span>*/</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;">});</span></pre>
+		<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 	</span></span></pre>
-			</div>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> 方法：close()</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">*/</span></span></pre>
-			<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> 方法：close()</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">*/</span></span></pre>
+		<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 	</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MyNavCard</span>.<span class="cm-property">close</span>();</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// 使用回调函数</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MyNavCard</span>.<span class="cm-property">close</span>(<span class="cm-variable">closeCallBack</span>);</span></pre>
-			<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MyNavCard</span>.<span class="cm-property">close</span>();</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// 使用回调函数</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MyNavCard</span>.<span class="cm-property">close</span>(<span class="cm-variable">closeCallBack</span>);</span></pre>
+		<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 	</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> <span class="cm-def">closeCallBack</span>() {</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">"关闭回调函数..."</span>);</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre>
-			<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> <span class="cm-def">closeCallBack</span>() {</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">"关闭回调函数..."</span>);</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre>
+		<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 	</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/*</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> 方法：open()</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">*/</span></span></pre>
-			<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/*</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> 方法：open()</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">*/</span></span></pre>
+		<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 	</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MyNavCard</span>.<span class="cm-property">open</span>();</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// 使用回调函数</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MyNavCard</span>.<span class="cm-property">open</span>(<span class="cm-variable">openCallBack</span>);</span></pre>
-			<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MyNavCard</span>.<span class="cm-property">open</span>();</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// 使用回调函数</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MyNavCard</span>.<span class="cm-property">open</span>(<span class="cm-variable">openCallBack</span>);</span></pre>
+		<pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 	</span></span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> <span class="cm-def">openCallBack</span>() {</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">"打开回调函数..."</span>);</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre>
-			<pre class=" CodeMirror-line "
-				role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span></span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> <span class="cm-def">openCallBack</span>() {</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">"打开回调函数..."</span>);</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre>
+		<pre class=" CodeMirror-line "
+			role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span></span></pre>
 		</div>
 		</div>
 		</div>
 		</div>
 		</div>
 		<div
-			style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 3058px;">
+			style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 3718px;">
 		</div>
-		<div class="CodeMirror-gutters" style="display: none; height: 3058px;"></div>
+		<div class="CodeMirror-gutters" style="display: none; height: 3718px;"></div>
 		</div>
 		</div>
 		</pre>
