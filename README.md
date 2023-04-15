@@ -15,7 +15,7 @@
 //简单用法
 //window.MyNavCard = $MGC();
 //高级用法
-window.mgc = $MGC({
+window.MyNavCard = $MGC({
 	icon: "https://stackblog.cf/img/avatar.jpg",
 	/*
 	icon: 可以是头像、网站logo等
@@ -88,12 +88,28 @@ window.mgc = $MGC({
 	详见: https://fa6.dashgame.com
 	或者: https://fontawesome.com
 	*/
-	fontawesomeCDN: "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css",
+	fontawesome: {
+		"type": "svg",
+		"CDN": "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/js/all.min.js"
+	},
 	/*
-	fontawesomeCDN: 默认的fontawesome图标库的CDN地址，可以是远程的也可以是本地的
-	默认值: 如上的远程地址
-	比如远程: https://xxx.xxx/fontawesome-xxx/css/all.min.css
-	比如本地: ./fontawesome-xxx/css/all.min.css
+	fontawesome: 图标库
+	
+	type: 图标类型
+	默认值: svg
+	可选值: svg(矢量图标)、font(字体图标)
+	注: svg矢量图标的边缘会显得更锐利，字体图标会收到反锯齿影响
+	
+	CDN: fontawesome图标库的CDN地址，可以是远程的也可以是本地的
+	注: svg图标选择js类型的CDN，font图标选择css类型的CDN
+	如果不提供或者提供的CDN类型与type不匹配，将使用默认值
+	
+	如果type为svg:
+	(远程) https://xxx.xxx/fontawesome-xxx/js/all.min.js
+	(本地) ./fontawesome-xxx/js/all.min.js
+	如果type为font: 
+	(远程) https://xxx.xxx/fontawesome-xxx/css/all.min.css
+	(本地) ./fontawesome-xxx/css/all.min.css
 	*/
 	hitokoto: {
 		"enable": true,
@@ -151,9 +167,8 @@ window.mgc = $MGC({
 	iconLinks: 图标链接列表
 	title: 图标链接的title属性
 	url: 图标链接的地址
-	target: 在何处打开链接，_blank，_self(默认值)，等等
 	icon: 图标的样式，不提供将使用默认值
-	默认使用的fontawesome的字体图标
+	使用的是fontawesome的图标
 	详见: https://fa6.dashgame.com
 	或者: https://fontawesome.com
 	func: 点击图标的自定义事件，设置func会导致url失效
@@ -163,9 +178,6 @@ window.mgc = $MGC({
 		"url": "https://stackblog.cf/",
 		"type": "primary",
 		"target": "_blank"
-	}, {
-		"title": "My GitHub",
-		"url": "https://github.com/Uyukisan",
 	}, {
 		"title": "MyukiGCard Usage",
 		"url": "https://github.com/Uyukisan/MyukiGCard",

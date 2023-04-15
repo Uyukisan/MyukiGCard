@@ -306,7 +306,12 @@
 }
 
 .myuki-gcard_icon-item {
-	display: inline-block;
+	/* display: inline-block; */
+	display: flex;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	align-items: center;
+	justify-content: center;
 	text-align: center;
 	align-items: center;
 	font-size: 24px;
@@ -318,7 +323,14 @@
 	text-decoration: none;
 }
 
-.myuki-gcard_icon-item:before, .myuki-gcard_icon-item::after{
+.myuki-gcard_icon-item>svg {
+	width: 24px;
+	height: 24px;
+	fill: currentColor;
+}
+
+.myuki-gcard_icon-item:before,
+.myuki-gcard_icon-item::after {
 	line-height: 32px;
 }
 

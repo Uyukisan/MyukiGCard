@@ -21,7 +21,10 @@
 		closeDuration: 60000,
 		defaultClosed: false,
 		defaultLinkIcon: "fa-solid fa-paw",
-		fontawesomeCDN: "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css",
+		fontawesome: {
+			"type": "svg",
+			"CDN": "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/js/all.min.js"
+		},
 		hitokoto: {
 			"enable": false,
 			"cats": [],
@@ -70,6 +73,9 @@
 		}]
 	]);
 	var darkmode = [0, 1, 2, 3];
+	var fontaCDN = ["https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/js/all.min.js",
+		"https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css"
+	]
 	Object.freeze(defaultSetting);
 	var MyukiGCard = function(option, undefined) {
 		return new MyukiGCard.fn.init(option, undefined);
@@ -144,23 +150,34 @@
 			let iconLinks = _this._setting.iconLinks;
 			for (let i = 0; i < iconLinks.length; i++) {
 				let iconLink = document.createElement("a");
+				let icon = document.createElement("i");
 				addClass("myuki-gcard_icon-item", iconLink);
 				iconLinks[i].title ? iconLink.setAttribute("title", iconLinks[i].title) : "";
-				iconLinks[i].icon ? addClass(iconLinks[i].icon, iconLink) : addClass(_this._setting.defaultLinkIcon, iconLink);
+				iconLinks[i].icon ? addClass(iconLinks[i].icon, icon) : addClass(_this._setting
+					.defaultLinkIcon, icon);
+				iconLink.appendChild(icon);
 				iconLinks[i].target ? iconLink.setAttribute("target", iconLinks[i].target) : "";
 				iconLinks[i].url && !iconLinks[i].func ? iconLink.setAttribute("href", iconLinks[i].url) :
 					iconLink.setAttribute(
 						"href", "javascript:void(0);");
-				iconLinks[i].func && typeof iconLinks[i].func == 'function' ? iconLink.addEventListener('click',
+				iconLinks[i].func && typeof iconLinks[i].func == 'function' ? iconLink.addEventListener(
+					'click',
 					iconLinks[i].func) : "";
 				iconList.appendChild(iconLink);
 			}
-			if(iconLinks.length>0){
-				let style = document.createElement("link");
+			if (iconLinks.length > 0) {
+				let cdnType = _this._setting.fontawesome.type == "svg" ? "script" : "link";
+				let newTag = document.createElement(cdnType);
 				let script = document.getElementsByTagName("script")[0];
-				style.href = _this._setting.fontawesomeCDN;
-				style.rel = "stylesheet";
-				script.parentNode.insertBefore(style,script);
+				if (cdnType == "script") {
+					newTag.src = _this._setting.fontawesome.CDN.endsWith(".js") ? _this._setting.fontawesome
+						.CDN : fontaCDN[0];
+				} else {
+					newTag.rel = "stylesheet";
+					newTag.href = _this._setting.fontawesome.CDN.endsWith(".css") ? _this._setting
+						.fontawesome.CDN : fontaCDN[1];
+				}
+				script.parentNode.insertBefore(newTag, script);
 				cardBox.appendChild(iconList);
 			}
 			let cardBtnList = document.createElement("div");
