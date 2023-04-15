@@ -20,12 +20,32 @@
 		fontFamily: "",
 		closeDuration: 60000,
 		defaultClosed: false,
+		defaultLinkIcon: "fa-solid fa-paw",
+		fontawesomeCDN: "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css",
 		hitokoto: {
 			"enable": false,
 			"cats": [],
 			"color": "#70a1ff",
 			"offline": "我是一条格言"
 		},
+		iconLinks: [{
+			"title": "My Github",
+			"url": "https://github.com/Uyukisan",
+			"icon": "fa-brands fa-github",
+			"target": "_blank"
+		}, {
+			"title": "My Blog",
+			"url": "https://stackblog.cf/",
+			"icon": "fa-solid fa-blog"
+		}, {
+			"title": "My Email",
+			"url": "mailto:stack@stackblog.cf",
+			"icon": "fa-solid fa-envelope"
+		}, {
+			"title": "RSS",
+			"url": "https://stackblog.cf/rss2.xml",
+			"icon": "fa-solid fa-rss"
+		}],
 		links: [{
 			"title": "My Blog",
 			"url": "https://stackblog.cf/",
@@ -118,6 +138,31 @@
 
 			}
 			cardBox.appendChild(cardInfo);
+			//添加图标链接
+			let iconList = document.createElement("div");
+			addClass("myuki-gcard_icon-list", iconList);
+			let iconLinks = _this._setting.iconLinks;
+			for (let i = 0; i < iconLinks.length; i++) {
+				let iconLink = document.createElement("a");
+				addClass("myuki-gcard_icon-item", iconLink);
+				iconLinks[i].title ? iconLink.setAttribute("title", iconLinks[i].title) : "";
+				iconLinks[i].icon ? addClass(iconLinks[i].icon, iconLink) : addClass(_this._setting.defaultLinkIcon, iconLink);
+				iconLinks[i].target ? iconLink.setAttribute("target", iconLinks[i].target) : "";
+				iconLinks[i].url && !iconLinks[i].func ? iconLink.setAttribute("href", iconLinks[i].url) :
+					iconLink.setAttribute(
+						"href", "javascript:void(0);");
+				iconLinks[i].func && typeof iconLinks[i].func == 'function' ? iconLink.addEventListener('click',
+					iconLinks[i].func) : "";
+				iconList.appendChild(iconLink);
+			}
+			if(iconLinks.length>0){
+				let style = document.createElement("link");
+				let script = document.getElementsByTagName("script")[0];
+				style.href = _this._setting.fontawesomeCDN;
+				style.rel = "stylesheet";
+				script.parentNode.insertBefore(style,script);
+				cardBox.appendChild(iconList);
+			}
 			let cardBtnList = document.createElement("div");
 			addClass("myuki-gcard_btn-list", cardBtnList);
 			let links = _this._setting.links;
@@ -129,7 +174,7 @@
 					"btn-default");
 				links[i].target ? btn.setAttribute("target", links[i].target) : "";
 				links[i].url && !links[i].func ? btn.setAttribute("href", links[i].url) : btn.setAttribute(
-					"href", "javascript: void (0);");
+					"href", "javascript:void(0);");
 				btn.innerText = links[i].title;
 				//添加按钮点击事件
 				links[i].func && typeof links[i].func == 'function' ? btn.addEventListener('click', links[i]
@@ -139,7 +184,7 @@
 			let closeBtn = document.createElement("a");
 			addClass("myuki-gcard_btn", closeBtn);
 			addClass("btn-close", closeBtn);
-			closeBtn.setAttribute("href", "javascript: void (0);");
+			closeBtn.setAttribute("href", "javascript:void(0);");
 			closeBtn.setAttribute("id", "myuki-gcard_close");
 			closeBtn.setAttribute("btn-type", "btn-close");
 			let lang = i18n.get(_this._setting.lang) ? _this._setting.lang : document.documentElement
@@ -181,7 +226,7 @@
 				this._closed = true;
 			}
 			//默认关闭或打开
-			if(this._setting.defaultClosed){
+			if (this._setting.defaultClosed) {
 				this._closed = true;
 				addClass("closed", cardBox);
 				addClass("hidden", myukiGCard);
@@ -190,7 +235,7 @@
 			if (_this._setting.mini == true) {
 				let cardMini = document.createElement("div");
 				addClass("myuki-gcard_mini", cardMini);
-				if(this._setting.defaultClosed){
+				if (this._setting.defaultClosed) {
 					addClass("shown", cardMini);
 				}
 				let miniImg = document.createElement("img");

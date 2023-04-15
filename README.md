@@ -22,7 +22,7 @@ window.mgc = $MGC({
 	*/
 	name: "Stack Dev",
 	/*
-	name: 可是是名字、网站名称等
+	name: 可以是名字、网站名称等
 	*/
 	info: "欢迎使用MyukiGCard",
 	/*
@@ -70,16 +70,30 @@ window.mgc = $MGC({
 	*/
 	closeDuration: 20000,
 	/*
-	关闭MyukiGCard后，多久不再显示（即使刷新页面也不再显示，但仍可通过迷你按钮手动打开）
+	closeDuration: 关闭MyukiGCard后，多久不再显示（即使刷新页面也不再显示，但仍可通过迷你按钮手动打开）
 	默认值: 60000 (60秒)
 	注: 只有defaultClosed设置为false时，closeDuration才起作用
 	*/
 	defaultClosed: false,
 	/*
-	默认关闭MyukiGCard
+	defaultClosed: 默认关闭MyukiGCard
 	默认值: false
 	可选值: true / false
 	注: 若defaultClosed为true，将导致closeDuration失效
+	*/
+	defaultLinkIcon: "fa-solid fa-paw",
+	/*
+	defaultLinkIcon: 默认的图标链接的样式
+	默认值: fa-solid fa-paw
+	详见: https://fa6.dashgame.com
+	或者: https://fontawesome.com
+	*/
+	fontawesomeCDN: "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css",
+	/*
+	fontawesomeCDN: 默认的fontawesome图标库的CDN地址，可以是远程的也可以是本地的
+	默认值: 如上的远程地址
+	比如远程: https://xxx.xxx/fontawesome-xxx/css/all.min.css
+	比如本地: ./fontawesome-xxx/css/all.min.css
 	*/
 	hitokoto: {
 		"enable": true,
@@ -108,6 +122,42 @@ window.mgc = $MGC({
 	hitokoto: 一言API
 	注: 不兼容IE
 	*/
+	iconLinks: [{
+		"title": "My Github",
+		"url": "https://github.com/Uyukisan",
+		"icon": "fa-brands fa-github",
+		"target": "_blank"
+	}, {
+		"title": "My Blog",
+		"url": "https://stackblog.cf/",
+		"icon": "fa-solid fa-blog"
+	}, {
+		"title": "My Email",
+		"url": "mailto:stack@stackblog.cf",
+		"icon": "fa-solid fa-envelope"
+	}, {
+		"title": "RSS",
+		"url": "https://stackblog.cf/rss2.xml",
+		"icon": "fa-solid fa-rss"
+	}, {
+		"title": "function",
+		"url": "https://stackblog.cf/",
+		// "icon": "fa-solid fa-fire",
+		"func": function() {
+			alert("You just clicked on me!");
+		}
+	}],
+	/*
+	iconLinks: 图标链接列表
+	title: 图标链接的title属性
+	url: 图标链接的地址
+	target: 在何处打开链接，_blank，_self(默认值)，等等
+	icon: 图标的样式，不提供将使用默认值
+	默认使用的fontawesome的字体图标
+	详见: https://fa6.dashgame.com
+	或者: https://fontawesome.com
+	func: 点击图标的自定义事件，设置func会导致url失效
+	*/
 	links: [{
 		"title": "My Blog",
 		"url": "https://stackblog.cf/",
@@ -124,7 +174,6 @@ window.mgc = $MGC({
 		"type": "success",
 		"url": "https://stackblog.cf/",
 		"func": function() {
-			//mgc.close();
 			let cval = confirm("你点击了我，3s后跳转网页？");
 			if (cval) {
 				setTimeout(function() {
@@ -134,7 +183,7 @@ window.mgc = $MGC({
 		}
 	}],
 	/*
-	导航链接列表
+	links: 按钮形式的导航链接列表
 	title: 链接的标题
 	url: 链接地址
 	
@@ -149,6 +198,7 @@ window.mgc = $MGC({
 	func: 按钮点击事件，设置func会导致url失效，可以在自定义方法中添加跳转语句,或者不设置url
 	*/
 });
+
 
 /*
  方法：close()
